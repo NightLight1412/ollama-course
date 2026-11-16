@@ -80,6 +80,6 @@ class SnakeGame:
             self.update()
             self.clock.tick(SPEED)
 
-if __name__ == "__main__":
-    game = SnakeGame()
-    game.run()
+# if __name__ == "__main__":
+#     game = SnakeGame()
+#     game.run()
