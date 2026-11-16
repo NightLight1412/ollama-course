@@ -31,7 +31,7 @@ response = ollama.chat(
             {
                 'role': 'user',
                 'content': 'Describe the image.', # The text prompt asking the model what to do with the image.
-                'images': ['./ollamacourse/image/image.jpg']           # A list of paths to image files. The model will analyze this file.
+                'images': ['./ollama-course/image/image.jpg']           # A list of paths to image files. The model will analyze this file.
             }
         ]
     )

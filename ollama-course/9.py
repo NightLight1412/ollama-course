@@ -37,7 +37,7 @@ uploaded_files = st.file_uploader("Choose an image", accept_multiple_files=True,
 print(uploaded_files)
 
 # Check if the user has uploaded at least one file.
-if len(uploaded_files) != 0:
+if uploaded_files:
     # Loop through each uploaded file.
     for uploaded_file in uploaded_files:
         # Debug prints
@@ -45,7 +45,7 @@ if len(uploaded_files) != 0:
         print(type(uploaded_file.name))
 
         # Display the image on the webpage.
-        st.image(uploaded_file, caption='Uploaded Image.', use_column_width=True)
+        st.image(uploaded_file, caption='Uploaded Image.', use_container_width=True)
 
         # Send the image to Llava for description.
         # CRITICAL NOTE: 'uploaded_file.name' gives us the filename (e.g., "image.jpg").
@@ -57,8 +57,8 @@ if len(uploaded_files) != 0:
             messages=[
                 {
                     'role': 'user',
-                                          'content': 'Describe the following images separately',
-                    'images': [uploaded_file.name] # Passing the filename to Ollama
+                    'content': 'Describe the following images separately',
+                    'images': [uploaded_file.getvalue()] # Passing the filename to Ollama
                 }
             ]
         )
