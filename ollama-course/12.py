@@ -39,6 +39,7 @@ def video_to_frames(video_path):
 
     frame_count = 0
     saved_frame_count = 0
+    
 
     while True:
         ret, frame = cap.read()
@@ -50,12 +51,12 @@ def video_to_frames(video_path):
         # If we are at the correct interval (0s, 2s, 4s...)
         if frame_count % frame_interval == 0:
             filename = f"frame_{saved_frame_count}.jpg"
-            
+            save_path = os.path.join(os.getcwd(), "ollama-course/VideoFrames", filename)
             # Add the filename to our global list 'frames' so we can find them later
-            frames.append(filename)
+            frames.append(save_path)
             
             # Save the actual image file to disk
-            cv2.imwrite(filename, frame)
+            cv2.imwrite(save_path, frame)
             
             print(f"Saved {filename}")
             saved_frame_count += 1
@@ -71,7 +72,7 @@ def video_to_frames(video_path):
 # Saves the uploaded video from Streamlit RAM to the hard drive.
 def save_uploaded_file(uploaded_file):
     save_path = os.getcwd()
-    file_path = os.path.join(save_path, uploaded_file.name)
+    file_path = os.path.join(save_path,"ollama-course/Video", uploaded_file.name)
 
     with open(file_path, "wb") as f:
         f.write(uploaded_file.getbuffer())
@@ -93,8 +94,8 @@ if uploaded_file is not None:
     # Initialize an empty list to store frame filenames.
     # Note: This list 'frames' is used inside the 'video_to_frames' function.
     frames = []
-    
-    video_path = uploaded_file.name
+    save_path = os.getcwd()
+    video_path = os.path.join(save_path, "ollama-course/Video", uploaded_file.name)
     
     # 2. Extract frames from the video
     # This populates the 'frames' list with filenames like 'frame_0.jpg', 'frame_1.jpg'.
@@ -104,7 +105,7 @@ if uploaded_file is not None:
     
     # 3. Analyze each frame with Llava
     for i in frames:
-        # st.image(i, caption='Uploaded Image.', use_column_width=True) # Optional: Show frame
+        # st.image(i, caption='Uploaded Image.', use_container_width=True) # Optional: Show frame
         
         # Ask Llava to describe the current frame
         response = ollama.chat(model='llava:7b',

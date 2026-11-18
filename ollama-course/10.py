@@ -27,7 +27,7 @@ def save_uploaded_file(uploaded_file):
     # Create the full absolute path (e.g., C:\Projects\Ollama\image.jpg).
     # os.path.join is safer than string concatenation ("/") because it handles
     # Windows/Mac/Linux path separators automatically.
-    file_path = os.path.join(save_path, "ollama-course/image", uploaded_file.name)
+    file_path = os.path.join(save_path, "ollama-course/Image", uploaded_file.name)
     # Save the file.
     # "wb" mode stands for "Write Binary". Images are binary files, not text.
     with open(file_path, "wb") as f:
