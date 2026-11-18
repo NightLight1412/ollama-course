@@ -163,4 +163,7 @@ cython_debug/
 /ollama-course/Image/*
 /ollama-course/Video/*
 /ollama-course/VideoFrames/*
+!/ollama-course/Image/.gitkeep
+!/ollama-course/Video/.gitkeep
+!/ollama-course/VideoFrames/.gitkeep
 .DS_Store
