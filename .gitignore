@@ -160,7 +160,7 @@ cython_debug/
 #.idea/
 
 # Video and Image contents for testing
-/ollama-course/Image/
-/ollama-course/Video/
-/ollama-course/VideoFrames/
+/ollama-course/Image/*
+/ollama-course/Video/*
+/ollama-course/VideoFrames/*
 .DS_Store
